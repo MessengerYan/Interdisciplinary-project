@@ -4,4 +4,4 @@ Our project is a Zeppelin that will take multiple pictures of a field, and the c
 
 This project is still ongoing, which is why some files are still empty.
 
-We are currently working on the stitching part, which we are trting to accelerate.
+We are currently working on the stitching part, which we are trying to accelerate.

@@ -9,17 +9,17 @@ import cv2
 
 # Test 1
 Set = acquisition.acquisition()
-print('acquisition terminée')
+print('acquisition finished')
 
 Set = preprocessing.preprocessing(Set)
-print('preprocessing terminé')
+print('preprocessing finished')
 
 try:
     mosaique = stitching.stitching(Set)
-    print('assemblage terminé')
+    print('assemblage finished')
     cv2.imwrite('output/output_image.jpg', mosaique)
     cv2.imshow('img', mosaique)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 except RuntimeError as e:
-    print(f'[ERREUR] {e}')
+    print(f'[ERROR] {e}')
