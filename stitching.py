@@ -13,7 +13,8 @@ def stitching(images):
     Input : images to stitch (matrix list)
     Output : stitched image (Matrix)
     """
-    stitcher = cv2.Stitcher_create()
+    stitcher = cv2.Stitcher_create(mode=cv2.Stitcher_SCANS)
+    stitcher.setRegistrationResol(0.1)
     status, stitched = stitcher.stitch(images)
     if status == 0:
         return stitched
