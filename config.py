@@ -6,7 +6,7 @@
 
 # acquisition.py
 
-FILETYPE = ".jpg" # Input images format
+FILETYPE = ".jpeg" # Input images format
 FOLDERPATH = "images/" # Input images path
 
 

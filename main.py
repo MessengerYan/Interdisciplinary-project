@@ -6,6 +6,7 @@ import postprocessing
 import preprocessing
 import stitching
 import cv2
+import test # TEST
 
 # Test 1
 Set = acquisition.acquisition()
@@ -18,8 +19,5 @@ try:
     mosaique = stitching.stitching(Set)
     print('assemblage finished')
     cv2.imwrite('output/output_image.jpg', mosaique)
-    cv2.imshow('img', mosaique)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
 except RuntimeError as e:
     print(f'[ERROR] {e}')
