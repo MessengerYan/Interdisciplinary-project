@@ -16,4 +16,4 @@ BLUR = 3 # Gaussian blur kernel size
 
 # stitching.py
 
-RESOLUTION = 0.6
+RESOLUTION = 0.9
