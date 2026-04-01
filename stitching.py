@@ -2,7 +2,6 @@
 ➵ Authors : Mael Pierron, Jean-Max Agogué
 ➵ Date : 17/03/2026
 ➵ Objective : Image stitching 
-➵ TODO : Accelerate the process of stitching by creating our own stitching function
 """
 
 import cv2
