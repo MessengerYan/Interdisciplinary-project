@@ -17,6 +17,8 @@ print('preprocessing finished')
 try:
     mosaique = stitching.stitching(Set)
     print('assemblage finished')
+    postprocessing.postprocessing(mosaique)
     cv2.imwrite('output/output_image.jpg', mosaique)
+    print("Full process finished")
 except RuntimeError as e:
     print(f'[ERROR] {e}')
