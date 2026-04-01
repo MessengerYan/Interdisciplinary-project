@@ -1,7 +1,6 @@
 import config
 import acquisition
 import detection
-import orthorectification
 import postprocessing
 import preprocessing
 import stitching
