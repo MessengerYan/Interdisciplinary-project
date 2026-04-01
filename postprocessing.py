@@ -1,41 +1,34 @@
-"""
-➵ Authors : Mael Pierron, Jean-Max Agogué
-➵ Date : 17/03/2026
-➵ Objective : Upgrade of the stitched image quality
-"""
 import cv2
 import numpy as np
 
 def postprocessing(image):
-
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    mask = gray > 0
-    mask = mask.astype(np.uint8)
+    mask = (gray > 10).astype(np.uint8)
     h, w = mask.shape
+
     heights = [0] * w
     best_area = 0
     best_rect = (0, 0, 0, 0)
+
     for i in range(h):
+        # Mise à jour de l'histogramme
         for j in range(w):
-            if mask[i][j] == 1:
-                heights[j] += 1
-            else:
-                heights[j] = 0
+            heights[j] = heights[j] + 1 if mask[i][j] == 1 else 0
+
+        # Plus grand rectangle dans l'histogramme courant
         stack = []
-        j = 0
-        while j <= w:
+        for j in range(w + 1):
             curr_height = heights[j] if j < w else 0
-            if not stack or curr_height >= heights[stack[-1]]:
-                stack.append(j)
-                j += 1
-            else:
+            while stack and curr_height < heights[stack[-1]]:  # while au lieu de if
                 top = stack.pop()
                 width = j if not stack else j - stack[-1] - 1
                 area = heights[top] * width
                 if area > best_area:
                     best_area = area
-                    x = stack[-1] + 1 if stack else 0
+                    x = 0 if not stack else stack[-1] + 1
                     y = i - heights[top] + 1
                     best_rect = (x, y, width, heights[top])
+            stack.append(j)
+
     x, y, w, h = best_rect
     return image[y:y+h, x:x+w]

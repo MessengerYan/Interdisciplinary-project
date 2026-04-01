@@ -6,6 +6,7 @@
 """
 
 import cv2
+import config
 
 def stitching(images):
     """
@@ -14,7 +15,7 @@ def stitching(images):
     Output : stitched image (Matrix)
     """
     stitcher = cv2.Stitcher_create(mode=cv2.Stitcher_SCANS)
-    stitcher.setRegistrationResol(0.1)
+    stitcher.setRegistrationResol(config.RESOLUTION)
     status, stitched = stitcher.stitch(images)
     if status == 0:
         return stitched

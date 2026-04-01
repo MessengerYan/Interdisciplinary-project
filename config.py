@@ -13,3 +13,7 @@ FOLDERPATH = "images/" # Input images path
 # preprocessing.py
 
 BLUR = 3 # Gaussian blur kernel size
+
+# stitching.py
+
+RESOLUTION = 0.6
