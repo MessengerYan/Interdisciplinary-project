@@ -14,6 +14,8 @@ def preprocessing(images):
     output: newSet (matrix list)
     """
     newSet = []
+    new_size = (cfg.IMG_WIDTH, cfg.IMG_HEIGHT)
     for img in images:
+        # img = cv2.resize(img, new_size, interpolation = cv2.INTER_AREA)
         newSet.append(cv2.GaussianBlur(img,(cfg.BLUR,cfg.BLUR),0))
     return newSet
